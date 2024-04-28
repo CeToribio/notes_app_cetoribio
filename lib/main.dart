@@ -7,7 +7,7 @@ import 'screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final database = await createDatabase(); // Inicializa la base de datos
+  final database = await createDatabase(); // start database
   runApp(
     Provider<Database>(
       create: (context) => database,
@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NOTES APP',
-      themeMode: ThemeMode.light,
       home: ChangeNotifierProvider(
           create: (context) =>
               NoteProvider(db: Provider.of<Database>(context, listen: false)),

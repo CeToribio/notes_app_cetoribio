@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app_cetoribio/models/note.dart';
+import 'package:notes_app_cetoribio/widgets/note_element.dart';
 import 'package:provider/provider.dart';
 
-import '../models/note.dart';
 import '../provider/note_provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,8 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text('Añadir Nota'),
           content: TextField(
             controller: controller,
-            decoration:
-                const InputDecoration(hintText: "Introduce el contenido de la nota"),
+            decoration: const InputDecoration(
+                hintText: "Introduce el contenido de la nota"),
           ),
           actions: <Widget>[
             TextButton(
@@ -34,7 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
             TextButton(
               child: const Text('Añadir'),
               onPressed: () {
-                // Añadir la nota a la base de datos
                 Provider.of<NoteProvider>(context, listen: false)
                     .insert(controller.text);
                 Navigator.of(context).pop();
@@ -56,8 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text('Editar Nota'),
           content: TextField(
             controller: controller,
-            decoration:
-                const InputDecoration(hintText: "Edita el contenido de la nota"),
+            decoration: const InputDecoration(
+                hintText: "Edita el contenido de la nota"),
           ),
           actions: <Widget>[
             TextButton(
@@ -86,7 +86,8 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (BuildContext dialogContext) {
         return AlertDialog(
           title: const Text('Eliminar Nota'),
-          content: const Text("¿Estás seguro de que quieres eliminar esta nota?"),
+          content:
+              const Text("¿Estás seguro de que quieres eliminar esta nota?"),
           actions: <Widget>[
             TextButton(
               child: const Text('Cancelar'),
@@ -124,48 +125,41 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Consumer<NoteProvider>(
         builder: (context, noteProvider, child) {
-          return ListView.builder(
-            itemCount: noteProvider.notes.length,
-            itemBuilder: (context, index) {
-              final note = noteProvider.notes[index];
-              return ListTile(
-                title: Text(note.content),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    IconButton(
-                      icon: const Icon(Icons.edit),
-                      onPressed: () {
-                        _editNote(context, note);
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        _deleteNote(context, note);
-                      },
-                    ),
-                  ],
+          // list empty
+          if (noteProvider.notes.isEmpty) {
+            return const Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Crea tu primera nota'),
+                  SizedBox(height: 20.0),
+                  Icon(Icons.note_alt_outlined, size: 50.0, color: Colors.grey),
+                ],
+              ),
+            );
+          } else {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Scrollbar(
+                child: ListView.builder(
+                  itemCount: noteProvider.notes.length,
+                  itemBuilder: (context, index) {
+                    final note = noteProvider.notes[index];
+                    return NoteElement(
+                        note: note,
+                        onDelete: () => _deleteNote(context, note),
+                        onEdit: () => _editNote(context, note));
+                  },
                 ),
-              );
-            },
-          );
+              ),
+            );
+          }
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _addNote(context),
         child: const Icon(Icons.add),
       ),
-      // body: const Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       Text('Crea tu primera nota'),
-      //       SizedBox(height: 20.0),
-      //       Icon(Icons.note_add, size: 50.0, color: Colors.grey),
-      //     ],
-      //   ),
-      // ),
     );
   }
 }
