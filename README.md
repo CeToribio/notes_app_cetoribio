@@ -1,16 +1,14 @@
 # notes_app_cetoribio
 
-A new Flutter project.
+La aplicación móvil de notas tiene como objetivo proporcionar a los usuarios una forma sencilla y eficiente de tomar, organizar y gestionar notas en sus dispositivos móviles. Permite realizar operaciones básicas de creación, lectura, actualización y eliminación (CRUD) de notas, así como almacenarlas localmente en el dispositivo del usuario.
 
-## Getting Started
+## Requerimientos
 
-This project is a starting point for a Flutter application.
+- Flutter SDK versión 3.19.4
+- Dart SDK versión 3.3.2
+- Extensiones en Visual Studio Code, Dart and Flutter.
+- Paquetes: sqflite 2.3.3 y provider 6.1.2
+- Androis Studio
+- Xcode
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 
