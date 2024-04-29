@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPicture.asset('lib/assets/images/edit.svg',
+            SvgPicture.asset('lib/assets/svg/edit.svg',
                 width: 100,
                 height: 100,
                 colorFilter: ColorFilter.mode(
@@ -21,7 +21,7 @@ class SplashScreen extends StatelessWidget {
               'Bienvenido a NOTES APP',
               style: TextStyle(fontSize: 20.0, color: Colors.white),
             ),
-            const SizedBox(height: 70.0),
+            const SizedBox(height: 100.0),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacementNamed(context, '/home');
