@@ -1,16 +1,41 @@
-# notes_app_cetoribio
+# notes_app
 
-A new Flutter project.
+La aplicación móvil de notas tiene como objetivo proporcionar a los usuarios una forma sencilla y eficiente de tomar, organizar y gestionar notas en sus dispositivos móviles. Permite realizar operaciones básicas de creación, lectura, actualización y eliminación (CRUD) de notas, así como almacenarlas localmente en el dispositivo del usuario.
 
-## Getting Started
+## Requerimientos
 
-This project is a starting point for a Flutter application.
+- Flutter SDK versión 3.19.4
+- Dart SDK versión 3.3.2
+- Extensiones en Visual Studio Code, Dart and Flutter.
+- Paquetes: sqflite 2.3.3 y provider 6.1.2
+- Androis Studio
+- Xcode
 
-A few resources to get you started if this is your first Flutter project:
+## Flujo del Diseño
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Se incluyen capturas de pantalla que muestran el flujo de diseño de la aplicación, proporcionando una visión general de la interfaz de usuario y la navegación dentro de la aplicación.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Route
+
+![screens app](lib/assets/images/app.png)
+
+- Crear, Leer, Actualizar y eliminar (CRUD)
+
+![CRUD](lib/assets/images/crud.png)
+
+## Diagrama Entidad-Relación del Almacenamiento de Datos
+
+Se presenta un diagrama entidad-relación que describe la estructura de la base de datos utilizada para almacenar las notas en la aplicación. Este diagrama proporciona una representación visual de las entidades y las relaciones entre ellas en el esquema de la base de datos.
+
+```markdown
++---------+
+| Note |
++---------+
+| id |
+| content |
++---------+
+```
+
+
+
+

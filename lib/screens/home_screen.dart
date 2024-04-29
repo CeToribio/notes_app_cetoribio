@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Notas',
+          ' Tus notas',
           style: TextStyle(
               color: Colors.white,
               fontSize: 24.0,
@@ -131,9 +131,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Crea tu primera nota'),
+                  Text('Crea tu primera nota',
+                      style: TextStyle(fontSize: 15.0, color: Colors.grey)),
                   SizedBox(height: 20.0),
-                  Icon(Icons.note_alt_outlined, size: 50.0, color: Colors.grey),
+                  Icon(Icons.note_add_rounded, size: 50.0, color: Colors.grey),
                 ],
               ),
             );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app_cetoribio/provider/note_provider.dart';
+import 'package:notes_app_cetoribio/screens/splash_screen.dart';
 import 'package:notes_app_cetoribio/services/database_service.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -25,10 +26,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'NOTES APP',
-      home: ChangeNotifierProvider(
-          create: (context) =>
-              NoteProvider(db: Provider.of<Database>(context, listen: false)),
-          child: const HomeScreen()),
+      home: const SplashScreen(),
+      routes: {
+        '/home': (context) => ChangeNotifierProvider(
+              create: (context) => NoteProvider(
+                  db: Provider.of<Database>(context, listen: false)),
+              child: const HomeScreen(),
+            ),
+      },
     );
   }
 }
